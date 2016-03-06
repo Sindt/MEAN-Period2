@@ -6,6 +6,7 @@ function add(n1, n2) {
     return n1 + n2;
 }
 
+//Async function
 function addASync(n1, n2, callback) {
     setTimeout(function () {
         var result = n1 + n2;

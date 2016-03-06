@@ -4,6 +4,7 @@ var app = express();
 
 app.use(bodyParser.urlencoded({extended: false}));
 
+//Using my own middleware:
 app.use("/api/calculator/:operation/:n1/:n2", function (req, res, next) {
 
     var calculatorRequest = {
@@ -16,15 +17,14 @@ app.use("/api/calculator/:operation/:n1/:n2", function (req, res, next) {
     next();
 });
 
+
+//Getting input from user by the request object
 app.get("/api/calculator/*", function (req, res) {
     var result = calc(req.calculator.operation, req.calculator.n1, req.calculator.n2);
     res.send("Result = " + result)
 });
 
-app.get('/', function(req, res, next) {
-    res.send("Hello world");
-});
-
+//Calculator
 function calc(operation, n1, n2) {
     if (operation === 'add') {
         return n1 + n2;
